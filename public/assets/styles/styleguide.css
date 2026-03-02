@@ -1,0 +1,96 @@
+@font-face {
+    font-family: headings;
+    src: url(/assets/fonts/heading-font.ttf);
+}
+
+@font-face {
+    font-family: main;
+    src: url(/assets/fonts/main-font.ttf);
+}
+
+@font-face {
+    font-family: italic;
+    font-style: italic;
+    src: url(/assets/fonts/italic-font.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img, video {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+body {
+    /* font sizes */
+    --paragraph: clamp(1rem, 2vw, 1.3rem);
+	--heading-small: clamp(1.2rem, 2vw, 1rem);
+	--heading-medium: clamp(1.4rem, 2.7vw, 2.2rem);
+	--heading-big: clamp(1.4rem, 3vw, 2.5rem);
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    
+    font-family: headings;
+    font-weight: 600;
+    font-size: var(--heading-big);
+}
+
+h3, h4 {
+    font-size: var(--heading-medium);
+}
+
+h5, h6 {
+    font-size: var(--heading-small);
+}
+
+p,a,button {
+    font-family: main;
+    font-weight: 400;
+    font-size: var(--paragraph);
+    text-decoration: none;
+}
+
+p.italic {
+    font-family: italic;
+    font-weight: 400;
+}
+
+
+/* link styling global */
+
+/* general link button look */
+a.styled {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    height: 2.5rem;
+    border-radius: 0.625rem;
+    color: black;
+
+    /* filled link button look */
+    &.primary {
+        background-color: #3C3C3C;
+        color: white;
+    }
+    
+    /* outlined link button look */
+    &.secondary {
+        background-color: transparent;
+        border: black 2px solid;
+        
+    }
+
+    /* finished link button look */
+    &.klaar {
+        background-color: #058a36;
+        color: white;
+    }
+}
