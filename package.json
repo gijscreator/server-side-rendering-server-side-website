@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/fdnd-task/server-side-rendering#readme",
   "dependencies": {
-    "express": "latest",
-    "liquidjs": "latest"
+    "express": "^5.2.1",
+    "liquidjs": "latest",
+    "node": "^25.7.0"
   }
 }
