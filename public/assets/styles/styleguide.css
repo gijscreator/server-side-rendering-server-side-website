@@ -72,7 +72,7 @@ svg {
 /* link styling global */
 
 /* general link button look */
-a.styled {
+a.styled, button.styled {
     display: flex;
     justify-content: center;
     align-items: center;
