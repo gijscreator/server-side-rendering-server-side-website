@@ -29,7 +29,8 @@ app.use(express.urlencoded({extended: true}))
 // Bestanden in deze map kunnen dus door de browser gebruikt worden
 app.use(express.static('public'))
 app.use((request, response, next) => {
-    response.locals.current_path = request.path;
+    // We use || '/' to ensure it's never an empty string
+    response.locals.current_path = request.path || '/';
     next();
 });
 
@@ -51,7 +52,9 @@ app.get('/', async function (request, response) {
 app.get('/welcome', async function (request, response) {
     // Render index.liquid uit de Views map
     // Geef hier eventueel data aan mee
-    response.render('welcome.liquid')
+    response.render('welcome.liquid', {
+        current_path: request.path
+    });
 })
 
 app.get('/veldverkenner', async function (request, response) {
