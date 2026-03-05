@@ -147,10 +147,18 @@ svg {
 
 .sierlint {
     background-color: var(--sierlint);
+
+    &::-webkit-progress-value { 
+        background-color: var(--sierlint); 
+    }
 }
 
 .voedseleiland {
     background-color: var(--voedseleiland);
+
+    &::-webkit-progress-value { 
+        color: var(--sierlint); 
+    }
 }
 
 .heuvel {
@@ -159,4 +167,29 @@ svg {
 
 .waterplandgebied {
     background-color: var(--waterplandgebied);
+}
+
+/* progress bar styling */
+
+progress {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 20px;
+    background-color: transparent;
+
+    &::-webkit-progress-value {
+        background-color: inherit;
+        border-radius: 10px;
+    }
+
+    &::-moz-progress-bar {
+        border-radius: 10px;
+        background-color: inherit;
+    }
+    &::-webkit-progress-bar {
+        background-color: #eee;
+        border-radius: 10px;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+    }
 }
