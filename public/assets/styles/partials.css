@@ -72,17 +72,17 @@ ul.carousel {
     div {
         grid-column: 2;
         display: flex;
-        gap: 8px;
+        gap: 0.5rem;
 
         a {
-            width: 10px;
-            height: 10px;
-            background: #e0e0e0;
+            width: 0.625rem;
+            height: 0.625rem;
+            background: var(--medium-background);
             border-radius: 50%;
             text-decoration: none;
 
             &.active {
-                background: #888;
+                background: var(--dark-background);
             }
         }
     } 

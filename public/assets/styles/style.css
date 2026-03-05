@@ -24,7 +24,7 @@ header.veldverkenner {
     justify-content: center;
     position: sticky;
     z-index: 10;
-    background-color: white;
+    background-color: var(--light-background);
     top:0;
     gap: 1rem;
     min-height: 5rem;
@@ -50,7 +50,7 @@ main.veldverkenner {
             scale: .7;
             display: flex;
             align-items: center;
-            background-color: #F8F39B;
+            background-color: var(--sierlint);
             justify-content: center;
             clip-path: path("M25 145C24.258 146.72 23.517 148.44 22.777 150.16C22.144 151.63 21.51 153.1 20.875 154.56C20.592 155.22 20.309 155.87 20.017 156.55C18.119 160.88 18.119 160.88 17 162C11.356 162.62 6.802 162.28 2 159C-1.27 153.8 -0.967 147.88 0 142C3.215 129.12 8.452 116.72 13.25 104.38C22.198 83.51 22.198 83.51 20.746 61.59C18.879 57.75 16.798 54.11 14.625 50.44C10.445 43.21 7.427 36.02 5 28C4.7 27.06 4.7 27.06 4.395 26.1C3.773 22.79 3.734 19.48 3.688 16.12C3.658 15.43 3.629 14.74 3.6 14.02C3.536 8.83 4.79 6.01 8 2C9.52 0.48 10.881 0.68 13 0.56C20.047 0.69 24.314 4.49 29.285 9.13C67.662 49.02 43.888 101.62 25 145Z");
             border-shape: path("M25 145C24.258 146.72 23.517 148.44 22.777 150.16C22.144 151.63 21.51 153.1 20.875 154.56C20.592 155.22 20.309 155.87 20.017 156.55C18.119 160.88 18.119 160.88 17 162C11.356 162.62 6.802 162.28 2 159C-1.27 153.8 -0.967 147.88 0 142C3.215 129.12 8.452 116.72 13.25 104.38C22.198 83.51 22.198 83.51 20.746 61.59C18.879 57.75 16.798 54.11 14.625 50.44C10.445 43.21 7.427 36.02 5 28C4.7 27.06 4.7 27.06 4.395 26.1C3.773 22.79 3.734 19.48 3.688 16.12C3.658 15.43 3.629 14.74 3.6 14.02C3.536 8.83 4.79 6.01 8 2C9.52 0.48 10.881 0.68 13 0.56C20.047 0.69 24.314 4.49 29.285 9.13C67.662 49.02 43.888 101.62 25 145Z");
@@ -81,7 +81,7 @@ main.veldverkenner {
             height: 5rem;
             border-radius: 100%;
             border: none;
-            background-color: white;
+            background-color: var(--light-background);
 
             &.zones {
                 view-transition-name: button-zones;
@@ -93,7 +93,7 @@ main.veldverkenner {
             
 
             p {
-                color: black;
+                color: var(--dark-text);
                 font-size: 1rem;
             }
 
@@ -113,7 +113,7 @@ footer.veldverkenner {
     min-height: 5rem;
     height: 10dvh;
     max-height: 8.75rem;
-    background-color: white;
+    background-color: var(--light-background);
     position: fixed;
     bottom: 0;
     z-index: 4;
@@ -128,17 +128,17 @@ footer.veldverkenner {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: black;
+            color: var(--dark-text);
 
             &.active {
 
-                color: green;
+                color: var(--active);
 
                 svg {
                     path {
-                        fill: green
+                        color: var(--active);
                     }
-                    fill: green
+                    color: var(--active);
                 }
             }
         }
@@ -182,7 +182,7 @@ section.zones-popover {
     border-radius: 0.625rem;
     padding: 1rem;
     opacity: 0;
-    border: solid 2px black;
+    border: solid 2px var(--dark-border);
     transform: translate(-50%, -50%) scale(0.9);
     transition: 
         opacity 0.3s ease-out, 
@@ -273,7 +273,7 @@ section.uitleg-popover {
     border-radius: 0.625rem;
     padding: 1rem;
     opacity: 1;
-    border: solid 2px black;
+    border: solid 2px var(--dark-border);
     transform: translate(-50%, -50%) scale(0.9);
     transition: 
         opacity 0.3s ease-out, 
@@ -313,7 +313,7 @@ section.opdracht-popover {
     border-radius: 0.625rem;
     padding: 1rem;
     opacity: 1;
-    border: solid 2px black;
+    border: solid 2px var(--dark-border);
     transform: translate(-50%, -50%) scale(0.9);
     transition: 
         opacity 0.3s ease-out, 
@@ -416,12 +416,15 @@ section.opdracht-popover {
         button {
             cursor: pointer;
             width: 50%;
+
             &.correct.clicked {
-                background-color: #058a36;
+                background-color: var(--correct);
+                color: var(--light-text);
             }
 
             &.incorrect.clicked {
-                background-color: #8F0000;
+                background-color: var(--incorrect);
+                color: var(--light-text);
             }
         }
     }
@@ -469,7 +472,7 @@ main.zone {
         justify-content: flex-start;
         align-items: center;
         gap: .5rem;
-        color: black;
+        color: var(--dark-text);
     }
 }
 
