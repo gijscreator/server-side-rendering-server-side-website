@@ -63,7 +63,7 @@ app.get('/veldverkenner', async function (request, response) {
         const result = await res.json();
         
         response.render('veldverkenner.liquid', {
-            zones: result.data // This passes the array of zones to your HTML
+            zones: result.data
         });
     } catch (error) {
         response.render('veldverkenner.liquid', { zones: [] });
