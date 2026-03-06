@@ -42,12 +42,6 @@ app.engine('liquid', engine.express());
 // Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
 app.set('views', './views')
 app.set('view engine', 'liquid')
-// Maak een GET route voor de index (meestal doe je dit in de root, als /)
-app.get('/', async function (request, response) {
-    // Render index.liquid uit de Views map
-    // Geef hier eventueel data aan mee
-    response.render('index.liquid')
-})
 
 app.get('/welcome', async function (request, response) {
     // Render index.liquid uit de Views map
@@ -56,6 +50,25 @@ app.get('/welcome', async function (request, response) {
         current_path: request.path
     });
 })
+
+// Maak een GET route voor de index (meestal doe je dit in de root, als /)
+app.get('/', async function (request, response) {
+    // Render index.liquid uit de Views map
+    // Geef hier eventueel data aan mee
+    const zones = await fetch('https://fdnd-agency.directus.app/items/frankendael_zones');
+    const zonesresult = await zones.json();
+    const plants = await fetch('https://fdnd-agency.directus.app/items/frankendael_plants');
+    const plantsresult = await plants.json();
+    const news = await fetch('https://fdnd-agency.directus.app/items/frankendael_news');
+    const newsResult = await news.json();
+    
+    response.render('index.liquid', {
+        zones: zonesresult.data,
+        plants: plantsresult.data,
+        news: newsResult.data,
+    });
+})
+
 
 app.get('/veldverkenner', async function (request, response) {
     try {
@@ -67,7 +80,7 @@ app.get('/veldverkenner', async function (request, response) {
         });
     } catch (error) {
         response.render('veldverkenner.liquid', { zones: [] });
-    }
+    } 
 });
 
 app.get('/zone/:slug', async (req, res) => {
@@ -108,12 +121,31 @@ app.get('/zone/:slug', async (req, res) => {
     }
 });
 
+app.get('/nieuws', async function (request, response) {
+    // Render nieuws.liquid uit de Views map
+    // Geef hier eventueel data aan mee
+    const news = await fetch('https://fdnd-agency.directus.app/items/frankendael_news');
+    const newsResult = await news.json();
+    
+    response.render('nieuws.liquid', {
+        news: newsResult.data,
+    });
+
+    console.log(newsResult)
+})
+
+app.get('/collectie', async function (request, response) {
+    // Render index.liquid uit de Views map
+    // Geef hier eventueel data aan mee
+    response.render('collectie.liquid');
+})
+
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
 app.post('/', async function (request, response) {
   // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
   // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
-  response.redirect(303, '/')
+    response.redirect(303, '/')
 })
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
