@@ -1,4 +1,4 @@
-<ul>
+<ul class="news {% if current_path == '/' %}horizontal{% endif %}">
     {% for newsitem in news %}
     <li>
         <h2>{{ newsitem.title }}</h2>
@@ -16,6 +16,5 @@
         <h2>{{ newsitem.title }}</h2>
         <img src="/assets/images/alium.webp" alt="">
     </li>
-    
     {% endfor %}
 </ul>

@@ -137,7 +137,12 @@ app.get('/nieuws', async function (request, response) {
 app.get('/collectie', async function (request, response) {
     // Render index.liquid uit de Views map
     // Geef hier eventueel data aan mee
-    response.render('collectie.liquid');
+    const plants = await fetch('https://fdnd-agency.directus.app/items/frankendael_plants');
+    const plantsresult = await plants.json();
+    
+    response.render('collectie.liquid', {
+        plants: plantsresult.data,
+    });
 })
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen

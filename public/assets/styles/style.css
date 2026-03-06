@@ -137,8 +137,10 @@ footer.veldverkenner {
                 svg {
                     path {
                         color: var(--active);
+                        fill: var(--active);
                     }
                     color: var(--active);
+                    fill: var(--active);
                 }
             }
         }

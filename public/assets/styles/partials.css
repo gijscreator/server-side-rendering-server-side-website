@@ -131,3 +131,17 @@ ul.flowerlist {
 .opdrachten-header {
     padding: 1rem;
 }
+
+/* partial newslist.liquid */
+.news {
+
+}
+
+.news.horizontal {
+    
+}
+
+/* partial mycollection.liquid */
+.mycollection {
+
+}

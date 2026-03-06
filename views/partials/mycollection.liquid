@@ -1,20 +1,26 @@
-<ul>
-{% for plant in plants %}
-    <li>
-        <h2>{{ plant.name }}</h2>
-        <h3>{{ plant.latin }}</h3>
-    </li>
-    <li>
-        <h2>{{ plant.name }}</h2>
-        <h3>{{ plant.latin }}</h3>
-    </li>
-    <li>
-        <h2>{{ plant.name }}</h2>
-        <h3>{{ plant.latin }}</h3>
-    </li>
-    <li>
-        <h2>{{ plant.name }}</h2>
-        <h3>{{ plant.latin }}</h3>
-    </li>
-    {%endfor %}
+<ul class="my-collection">
+    {% if plants.size > 0 %}
+        {% for plant in plants %}
+        <li>
+            <h2>{{ plant.name }}</h2>
+            <h3>{{ plant.latin }}</h3>
+        </li>
+        <li>
+            <h2>{{ plant.name }}</h2>
+            <h3>{{ plant.latin }}</h3>
+        </li>
+        <li>
+            <h2>{{ plant.name }}</h2>
+            <h3>{{ plant.latin }}</h3>
+        </li>
+        <li>
+            <h2>{{ plant.name }}</h2>
+            <h3>{{ plant.latin }}</h3>
+        </li>
+        {%endfor %}
+    {% else %}
+        <p>Je hebt nog niks gespaard
+            Start de <span> Veldverkenner </span> om meer te weten te komen over wat er groeit en je collectie aan te vullen
+        </p>
+    {% endif %}
 </ul>
