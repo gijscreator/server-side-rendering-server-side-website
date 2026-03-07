@@ -2,23 +2,31 @@
     {% if plants.size > 0 %}
         {% for plant in plants %}
         <li class="{{ plant.main_zone.type }}">
-            <h2>{{ plant.name }}</h2>
-            <h3>{{ plant.latin }}</h3>
+            <article>
+                <h2>{{ plant.name }}</h2>
+                <h3 class="italic">{{ plant.latin }}</h3>
+            </article>
             <img src="/assets/images/alium.webp" alt="">
         </li>
-        <li class="{{ plant_zone.type | default: 'no-zone' }}">
-            <h2>{{ plant.name }}</h2>
-            <h3>{{ plant.latin }}</h3>
+        <li class="{{ plant.main_zone.type }}">
+            <article>
+                <h2>{{ plant.name }}</h2>
+                <h3 class="italic">{{ plant.latin }}</h3>
+            </article>
             <img src="/assets/images/alium.webp" alt="">
         </li>
-        <li class="{{ plant_zone.type | default: 'no-zone' }}">
-            <h2>{{ plant.name }}</h2>
-            <h3>{{ plant.latin }}</h3>
+        <li class="{{ plant.main_zone.type }}">
+            <article>
+                <h2>{{ plant.name }}</h2>
+                <h3 class="italic">{{ plant.latin }}</h3>
+            </article>
             <img src="/assets/images/alium.webp" alt="">
         </li>
-        <li class="{{ plant_zone.type | default: 'no-zone' }}">
-            <h2>{{ plant.name }}</h2>
-            <h3>{{ plant.latin }}</h3>
+        <li class="{{ plant.main_zone.type }}">
+            <article>
+                <h2>{{ plant.name }}</h2>
+                <h3 class="italic">{{ plant.latin }}</h3>
+            </article>
             <img src="/assets/images/alium.webp" alt="">
         </li>
         {% endfor %}

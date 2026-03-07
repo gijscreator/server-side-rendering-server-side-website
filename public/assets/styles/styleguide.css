@@ -38,9 +38,9 @@ body {
     /* --------- colors --------- */
 
     /* zone colors */
-    --sierlint: #F7F3A4;
-    --voedseleiland: #BAD790;
-    --heuvel: #D2C9E7;
+    --sierlint: #FFFFD3;
+    --voedseleiland: #D3F7A6;
+    --heuvel: #D4C8E2;
     --waterplandgebied: #99D7EC;
 
     /* site wide colors */
@@ -59,6 +59,7 @@ body {
     /* --------- borders --------- */
     --border-image: 0.625rem;
     --border-popover: 1rem;
+    --border-card: .8rem;
     --border-button: .5rem;
     --border-round: 100%;
 
@@ -80,6 +81,12 @@ h3, h4 {
 
 h5, h6 {
     font-size: var(--heading-small);
+}
+
+h3.italic {
+    font-family: italic;
+    font-weight: 400;
+    font-size: var(--paragraph);
 }
 
 p,a,button {

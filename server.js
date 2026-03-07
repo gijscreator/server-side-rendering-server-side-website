@@ -64,6 +64,9 @@ app.get('/', async function (request, response) {
     const zones = zonesData.data;
     const rawPlants = plantsData.data;
 
+    const news = await fetch('https://fdnd-agency.directus.app/items/frankendael_news');
+    const newsResult = await news.json();
+
     // connect the zone to the plants
     const plants = rawPlants.map(plant => {
         // get the first id of the matched zone
@@ -83,6 +86,7 @@ app.get('/', async function (request, response) {
     response.render('index.liquid', {
         zones: zones,
         plants: plants,
+        news: newsResult.data,
         current_path: request.path,
         zone_type: 'Home'
     });
@@ -186,20 +190,42 @@ app.get('/nieuws', async function (request, response) {
     response.render('nieuws.liquid', {
         news: newsResult.data,
     });
-
-    console.log(newsResult)
 })
 
 app.get('/collectie', async function (request, response) {
-    // Render index.liquid uit de Views map
-    // Geef hier eventueel data aan mee
-    const plants = await fetch('https://fdnd-agency.directus.app/items/frankendael_plants');
-    const plantsresult = await plants.json();
-    
-    response.render('collectie.liquid', {
-        plants: plantsresult.data,
+    // 1. Fetch both plants and zones simultaneously for speed
+    const [plantsRes, zonesRes] = await Promise.all([
+        fetch('https://fdnd-agency.directus.app/items/frankendael_plants'),
+        fetch('https://fdnd-agency.directus.app/items/frankendael_zones')
+    ]);
+
+    const plantsData = await plantsRes.json();
+    const zonesData = await zonesRes.json();
+
+    const zones = zonesData.data;
+
+    // 2. Map the zones to the plants (Linking the data)
+    const plantsWithZones = plantsData.data.map(plant => {
+        // Look up the first zone ID from the plant's zones array [1]
+        const firstZoneId = plant.zones ? plant.zones[0] : null;
+        
+        // Find the matching zone object in the zones array
+        const matchedZone = zones.find(z => z.id === firstZoneId);
+
+        return {
+            ...plant,
+            // Attach the whole zone object so Liquid can use .type or .name
+            main_zone: matchedZone || { type: 'geen-zone', name: 'Onbekend' }
+        };
     });
-})
+
+    // 3. Render the page
+    response.render('collectie.liquid', {
+        plants: plantsWithZones,
+        current_path: request.path,
+        zone_type: 'Collectie' // This sets the title/path variable
+    });
+});
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
@@ -215,6 +241,6 @@ app.set('port', process.env.PORT || 8000)
 
 // Start Express op, haal daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
-  // Toon een bericht in de console en geef het poortnummer door
-  console.log(`Application started on http://localhost:${app.get('port')}`)
+    // Toon een bericht in de console en geef het poortnummer door
+    console.log(`Application started on http://localhost:${app.get('port')}`)
 })
