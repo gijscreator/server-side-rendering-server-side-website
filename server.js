@@ -29,8 +29,13 @@ app.use(express.urlencoded({extended: true}))
 // Bestanden in deze map kunnen dus door de browser gebruikt worden
 app.use(express.static('public'))
 app.use((request, response, next) => {
-    // We use || '/' to ensure it's never an empty string
+    // Current path for active states
     response.locals.current_path = request.path || '/';
+
+    // Get the referer (the page the user came from)
+    // If there is no referer, default to '/'
+    response.locals.previous_path = request.get('Referrer') || '/';
+    
     next();
 });
 
@@ -91,7 +96,6 @@ app.get('/', async function (request, response) {
         zone_type: 'Home'
     });
 });
-
 
 app.get('/veldverkenner', async function (request, response) {
     try {

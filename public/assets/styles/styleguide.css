@@ -68,6 +68,8 @@ body {
     --correct: #015E30;
     --incorrect: #8F0000;
 
+    background-color: var(--light-background);
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -143,6 +145,14 @@ main:not(.veldverkenner) {
         background-color: var(--active);
         color: var(--light-text);
     }
+}
+
+a.back {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .5rem;
+    color: var(--dark-text)
 }
 
 .notext {

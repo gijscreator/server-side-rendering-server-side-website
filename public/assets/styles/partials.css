@@ -121,6 +121,12 @@ ul.flowerlist {
 
 .opdrachten-header {
     padding: 1rem;
+
+    div {
+        display: flex;
+        flex-direction: row-reverse;
+        padding-block: 1rem;
+    }
 }
 
 /* partial newslist.liquid */
