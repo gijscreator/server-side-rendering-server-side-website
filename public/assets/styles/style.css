@@ -65,25 +65,28 @@ header.veldverkenner {
 main.veldverkenner {
     margin-bottom: clamp(5rem, 10dvh, 8.75rem);
 
-    section:nth-of-type(1) {
+    section.newdesign {
         display: flex;
         flex-direction: column;
         position: relative;
 
+        &.inactive {
+            display: none;
+        }
 
-        a.sierlint1 {
-            position: absolute;
-            bottom: 0;
-            left: 47%;
-            width: 100px;
-            height: 170px;
-            scale: .7;
+        svg {
+            width: 100vw;
+            height: 100%;
+        }
+    }
+
+    section.olddesign {
+        display: none;
+        flex-direction: column;
+        position: relative;
+
+        &.active {
             display: flex;
-            align-items: center;
-            background-color: var(--sierlint);
-            justify-content: center;
-            clip-path: path("M25 145C24.258 146.72 23.517 148.44 22.777 150.16C22.144 151.63 21.51 153.1 20.875 154.56C20.592 155.22 20.309 155.87 20.017 156.55C18.119 160.88 18.119 160.88 17 162C11.356 162.62 6.802 162.28 2 159C-1.27 153.8 -0.967 147.88 0 142C3.215 129.12 8.452 116.72 13.25 104.38C22.198 83.51 22.198 83.51 20.746 61.59C18.879 57.75 16.798 54.11 14.625 50.44C10.445 43.21 7.427 36.02 5 28C4.7 27.06 4.7 27.06 4.395 26.1C3.773 22.79 3.734 19.48 3.688 16.12C3.658 15.43 3.629 14.74 3.6 14.02C3.536 8.83 4.79 6.01 8 2C9.52 0.48 10.881 0.68 13 0.56C20.047 0.69 24.314 4.49 29.285 9.13C67.662 49.02 43.888 101.62 25 145Z");
-            border-shape: path("M25 145C24.258 146.72 23.517 148.44 22.777 150.16C22.144 151.63 21.51 153.1 20.875 154.56C20.592 155.22 20.309 155.87 20.017 156.55C18.119 160.88 18.119 160.88 17 162C11.356 162.62 6.802 162.28 2 159C-1.27 153.8 -0.967 147.88 0 142C3.215 129.12 8.452 116.72 13.25 104.38C22.198 83.51 22.198 83.51 20.746 61.59C18.879 57.75 16.798 54.11 14.625 50.44C10.445 43.21 7.427 36.02 5 28C4.7 27.06 4.7 27.06 4.395 26.1C3.773 22.79 3.734 19.48 3.688 16.12C3.658 15.43 3.629 14.74 3.6 14.02C3.536 8.83 4.79 6.01 8 2C9.52 0.48 10.881 0.68 13 0.56C20.047 0.69 24.314 4.49 29.285 9.13C67.662 49.02 43.888 101.62 25 145Z");
         }
 
         svg {
@@ -112,6 +115,7 @@ main.veldverkenner {
             border-radius: 100%;
             border: none;
             background-color: var(--light-background);
+            color: var(--dark-text);
 
             &.zones {
                 view-transition-name: button-zones;
@@ -318,14 +322,44 @@ quest page
 
 main.quest {
     section {
-        
+        p {
+            margin-block: 1rem;
+        }
+    }
+    /* section with intro content */
+    section.intro {
+
+        div.xp-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* section with intro */
         article.mapwrapper {
             svg {
                 width: 100%;
-                height: 200px;
+                height: fit-content;
+                border-radius: var(--border-image);
             }
         }
     }
+
+    section.start {
+
+        article {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            a {
+                width: 100%;
+                min-height: 3.5rem;
+            }
+        }
+    }
+
+
 
 }
 

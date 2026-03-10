@@ -277,3 +277,7 @@ ul.quest {
         }
     }
 }
+
+.heading {
+    margin-block: 1rem;
+}

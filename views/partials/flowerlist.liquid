@@ -8,7 +8,7 @@
                     <h2>{{ plant.name }}</h2>
                     <p>{{ plant.description }}</p>
                     {% if zone_slug %}
-                        <a href="/veldverkenner/{{ zone_slug }}/{{ plant.slug }}" class="styled flowerlist">
+                        <a class="styled quest plantcard" href="/veldverkenner/{{ zone_slug }}/{{ plant.slug }}">
                             Meer over deze plant
                         </a>
                     {% endif %}
@@ -22,11 +22,11 @@
                     <p>Helaas! deze plant heb jij nog niet ontdekt</p>
                     
                     {% if zone_slug and plant.quest %}
-                        <a href="/veldverkenner/{{ zone_slug }}/{{ plant.quest.slug }}" class="styled flowerlist">
+                        <a class="styled quest plantcard" href="/veldverkenner/{{ zone_slug }}/{{ plant.quest.slug }}">
                             Verdien deze plant
                         </a>
                     {% else %}
-                        <p><i>Geen opdracht beschikbaar</i></p>
+                        <p>Geen opdracht beschikbaar</p>
                     {% endif %}
                 </article>
             </li>

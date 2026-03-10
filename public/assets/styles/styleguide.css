@@ -24,7 +24,7 @@
 }
 
 button.opdrachtgever {
-    display: none;
+
 }
 
 img, video {
@@ -35,7 +35,7 @@ img, video {
 
 body {
     /* --------- font sizes --------- */
-    --paragraph: clamp(1rem, 2vw, 1.3rem);
+    --paragraph: clamp(1.1rem, 2vw, 1.3rem);
 	--heading-small: clamp(1.2rem, 2vw, 1rem);
 	--heading-medium: clamp(1.4rem, 2.7vw, 2.2rem);
 	--heading-big: clamp(1.4rem, 3vw, 2.5rem);
@@ -159,9 +159,24 @@ main:not(.veldverkenner) {
         background-color: var(--questbutton);
         color: var(--light-text);
     }
-    &.flowerlist {
+
+    &.quest {
         background-color: var(--questbutton);
         color: white;
+        justify-content: flex-start;
+        min-height: 3.5rem;
+    }
+
+    &.start {
+        margin-block: 1rem;
+    }
+
+    &.awnser {
+        background-color: transparent;
+        border: 2px solid var(--dark-border);
+    }
+
+    &.plantcard {
         width: 80%;
     }
 }

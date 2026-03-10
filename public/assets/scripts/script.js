@@ -40,21 +40,15 @@ document.querySelectorAll('.opdracht-popover').forEach(popover => {
         }
     });
 });
+
 const styleknoppie = document.querySelector('.opdrachtgever');
+const newdesign = document.querySelector('.newdesign');
+const olddesign = document.querySelector('.olddesign');
+
 
 styleknoppie.addEventListener('click', () => {
+    newdesign.classList.toggle('inactive');
+    olddesign.classList.toggle('active');
 
-    const bestaande_link = document.getElementById('opdrachtgever-css');
-
-    if (bestaande_link) {
-
-        bestaande_link.remove();
-        console.log('CSS VERWIJDERD');
-    } else {
-
-        const nieuwe_link = `<link id="opdrachtgever-css" rel="stylesheet" href="/assets/styles/opdrachtgever.css" type="text/css">`;
-        document.head.insertAdjacentHTML('beforeend', nieuwe_link);
-        console.log('CSS TOEGEVOEGD');
-    }
 });
 

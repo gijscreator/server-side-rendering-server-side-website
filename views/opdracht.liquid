@@ -5,13 +5,21 @@
     {% case state %}
         {% when 'intro' %}
             <section class="intro">
-                <h1>{{ quest.title }}</h1>
-                <p>{{ quest.description }}</p>
+                {% comment %} heading in a partial for simple changes to margin and padding {% endcomment %}
+                {% render 'partials/general-heading.liquid',
+                    heading_level: 1,
+                    content: quest.title,
+                %}
                 <img class="landscape" src="{{ quest.image }}" alt="">
-                <h2>{{ quest.name }}</h2>
-                <p>+{{ quest.xp }}xp</p>
-                <p>{{ quest.description }}</p>
-                <a href="?step=start" class="button">Start de opdracht</a>
+                <div class="xp-heading">
+                    {% render 'partials/general-heading.liquid',
+                        heading_level: 2,
+                        content: quest.name,
+                    %}
+                    <p>+{{ quest.xp }}xp</p>
+                </div>
+                <p>Ga naar deze zone en bekijk alle planten goed - we gaan je hier straks een vraag over stellen :)</p>
+                <a href="?step=start" class="styled quest start">Ik ben er! - begin de opdracht</a>
                 <article class="mapwrapper">
                     <svg viewBox="0 0 354 115" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_588_1362)">
@@ -66,13 +74,20 @@
 
         {% when 'start' %}
             <section class="start">
-                <h2>{{ quest.question_title }}</h2>
+                {% render 'partials/general-heading.liquid',
+                    heading_level: 1,
+                    content: quest.question_title,
+                %}
                 <p>{{ quest.question_text }}</p>
 
-                <div class="answer-options {{ quest.type }}-grid">
+                {% if quest.type =='button' %}
+                    <img class="landscape" src="/assets/images/alium.webp" alt="">
+                {% endif %}
+                
+                <article>
                     {% for option in quest.options %}
                         {% if quest.type == 'button' %}
-                            <a href="?step={% if option.value == quest.correct_answer %}correct{% else %}incorrect{% endif %}" class="quiz-button">
+                            <a href="?step={% if option.value == quest.correct_answer %}correct{% else %}incorrect{% endif %}" class="styled awnser">
                                 {{ option.label }}
                             </a>
                         {% elsif quest.type == 'image' %}
@@ -81,7 +96,7 @@
                             </a>
                         {% endif %}
                     {% endfor %}
-                </div>
+                </article>
             </section>
 
         {% when 'correct' %}
@@ -89,7 +104,7 @@
                 <div class="result success">
                     <h2>🎉 Helemaal goed!</h2>
                     <p>Je hebt {{ quest.xp }} XP verdiend.</p>
-                    <a href="/veldverkenner/{{ zone_slug }}" class="button">Volgende opdracht</a>
+                    <a href="/veldverkenner/{{ zone_slug }}" class="styled quest">Volgende opdracht</a>
                 </div>
             </section>
 
@@ -98,8 +113,10 @@
                 <div class="result error">
                     <h2>Helaas, dat is niet juist.</h2>
                     <p>Kijk nog eens goed naar de plant en probeer het opnieuw.</p>
-                    <a href="?step=start" class="button">Opnieuw proberen</a>
+                    <a href="?step=start" class="styled quest">Opnieuw proberen</a>
                 </div>
             </section>
     {% endcase %}
 </main>
+{% render 'partials/foot.liquid', current_path: current_path %}
+
