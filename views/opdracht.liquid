@@ -1,3 +1,44 @@
-<main class="{{ zone_type }}">
+{% render 'partials/head.liquid'%}
+<main class="opdracht" data-zone="{{ zone_type }}">
+    {% render 'partials/linkback.liquid' %}
 
+    {% case state %}
+        {% when 'intro' %}
+            <h1>{{ quest.title }}</h1>
+            <p>{{ quest.description }}</p>
+            <img src="{{ quest.image }}" alt="">
+            <a href="?step=start" class="button">Start de opdracht</a>
+
+        {% when 'start' %}
+            <h2>{{ quest.question_title }}</h2>
+            <p>{{ quest.question_text }}</p>
+
+            <div class="answer-options {{ quest.type }}-grid">
+                {% for option in quest.options %}
+                    {% if quest.type == 'button' %}
+                        <a href="?step={% if option.value == quest.correct_answer %}correct{% else %}incorrect{% endif %}" class="quiz-button">
+                            {{ option.label }}
+                        </a>
+                    {% elsif quest.type == 'image' %}
+                        <a href="?step={% if option.value == quest.correct_answer %}correct{% else %}incorrect{% endif %}" class="quiz-image">
+                            <img src="{{ option.image_url }}" alt="Optie {{ forloop.index }}">
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+        {% when 'correct' %}
+            <div class="result success">
+                <h2>🎉 Helemaal goed!</h2>
+                <p>Je hebt {{ quest.xp }} XP verdiend.</p>
+                <a href="/veldverkenner/{{ zone_slug }}" class="button">Volgende opdracht</a>
+            </div>
+
+        {% when 'incorrect' %}
+            <div class="result error">
+                <h2>Helaas, dat is niet juist.</h2>
+                <p>Kijk nog eens goed naar de plant en probeer het opnieuw.</p>
+                <a href="?step=start" class="button">Opnieuw proberen</a>
+            </div>
+    {% endcase %}
 </main>

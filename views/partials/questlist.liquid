@@ -18,13 +18,12 @@
                             </svg>
                         </div>
                         <div class="headingwrapper">
-                            {% comment %} Accessing the quest properties directly from the plant object {% endcomment %}
                             <h3>{{ plant.quest.name }}</h3>
                             <p>+{{ plant.quest.xp | default: 25 }}xp</p>
                         </div>
                     </article>
                     
-                    <p>{{ plant.quest.description | truncate: 50 }}</p>
+                    <p>{{ plant.quest.description }}</p>
                 </section>
 
                 <a href="/veldverkenner/{{ zone_slug }}/{{ plant.quest.slug }}">
