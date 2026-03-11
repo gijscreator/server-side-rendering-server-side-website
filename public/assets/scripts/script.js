@@ -26,7 +26,35 @@ document.querySelectorAll('.zonepopover').forEach(zone => {
             }
         });
     });
+
+    const questcontent = zone.querySelector('.popoverquestion');
+    const plantinfo = zone.querySelector('.popoverplantinfo');
+    const detailsLinks = zone.querySelectorAll('.details');
+
+    detailsLinks.forEach(button => {
+        button.addEventListener('click', () => {
+
+            detailsLinks.forEach(btn => btn.classList.toggle('clicked'));
+            button.classList.toggle('clicked');
+
+            if (questcontent) {
+                questcontent.classList.toggle('inactive');
+            }
+            
+            if (plantinfo) {
+                plantinfo.classList.toggle('active');
+            }
+        });
+    });
 });
+
+const styleToggle = document.querySelector('.opdrachtgever');
+
+styleToggle.addEventListener('click', () => {
+    styleToggle.classList.toggle('clicked');
+});
+
+
 
 
 // URL Cleanup logic for the Popover API

@@ -56,6 +56,7 @@
         grid-template-columns: auto auto auto;
         gap: .5rem;
         margin-block: .5rem;
+        width: 100%;
 
         button {
             width: 100%;
@@ -76,12 +77,70 @@
         }
     }
 
-    .nextsteps {
-
+    article.nextsteps {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        margin-top:1rem;
+        width: 100%;
         opacity:0;
 
         &.active {
             opacity:1;
         }
     }
+
+    section.popoverquestion {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        &.inactive {
+            display: none;
+        }
+    }
+
+    section.popoverplantinfo {
+        display: none;
+
+        &.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+    }
+}
+
+button.opdrachtgever {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--dark-border);
+    border-radius: var(--border-round);
+    position: fixed;
+    z-index:4;
+    right: 2vw;
+    bottom: 13dvh;
+    width: 5rem;
+    height: 5rem;
+
+    transition: background-color 0.5s ease, color 0.3s ease, border 0.3s ease;
+
+    &.clicked {
+        background-color: var(--questbutton);
+        color: var(--light-text);
+        border: 2px solid white;
+
+        svg {
+
+            fill: var(--light-text);
+
+            path {
+                fill: var(--light-text);
+            }
+        }
+    }
+
+
 }

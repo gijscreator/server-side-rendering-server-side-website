@@ -2,11 +2,13 @@
     {% if plants.size > 0 %}
         {% for plant in plants %}
         <li class="{{ plant.main_zone.type }}">
-            <article>
-                <h2>{{ plant.name }}</h2>
-                <h3 class="italic">{{ plant.latin }}</h3>
-            </article>
-            <img class="square" src="https://fdnd-agency.directus.app/assets/{{ plant.in_bloom }}" alt="">
+            <a href="/veldverkenner/{{ plant.main_zone.slug }}/{{ plant.slug }}">
+                <article>
+                    <h2>{{ plant.name }}</h2>
+                    <h3 class="italic">{{ plant.latin | truncate: 20 }}</h3>
+                </article>
+                <img class="square" src="https://fdnd-agency.directus.app/assets/{{ plant.in_bloom }}" alt="">
+            </a>    
         </li>
         {% endfor %}
     {% else %}

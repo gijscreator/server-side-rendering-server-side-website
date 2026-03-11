@@ -23,10 +23,6 @@
     list-style: none;
 }
 
-button.opdrachtgever {
-
-}
-
 img, video {
     width: 100%;
     max-width: 400px;
@@ -60,7 +56,7 @@ body {
     --dark-background: #3C3C3C;
 
     --light-text: #F7F7F7;
-    --dark-text: #3C3C3C;
+    --dark-text: #1a1a1a;
     --body-background-green: #fe8b5038;
 
     /* accents and borders */
