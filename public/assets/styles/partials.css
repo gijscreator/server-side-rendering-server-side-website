@@ -164,6 +164,13 @@ ul.news {
 
     }
 
+    a {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: .5rem;
+        color: var(--dark-text);
+    }
+
 
 }
 
@@ -188,6 +195,11 @@ ul.news.horizontal {
     img {
         width: 75vw;
         
+    }
+
+    a {
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -298,7 +310,7 @@ section.detailpage {
     }
 
     p.date {
-
+        margin-block: 1rem;
     }
 
     article.detaillist-plants {

@@ -4,7 +4,10 @@
         <a href="/nieuws/{{ newsitem.slug }}">
             <div>
                 <p class="badge">Bloemen</p>
-                <h2>{{ newsitem.title }}</h2>
+                {% render 'partials/general-heading.liquid',
+                    heading_level: 2,
+                    content: newsitem.title,
+                %}
             </div>
             <img class="landscape" src="https://fdnd-agency.directus.app/assets/{{ newsitem.image }}" alt="">
             {% if current_path == '/' %}

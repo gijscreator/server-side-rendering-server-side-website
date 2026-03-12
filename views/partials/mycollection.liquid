@@ -1,6 +1,13 @@
 <ul class="my-collection">
     {% if plants.size > 0 %}
-        {% for plant in plants %}
+        
+        {% if current_path == "/" %}
+            {% assign loop_limit = 4 %}
+        {% else %}
+            {% assign loop_limit = plants.size %}
+        {% endif %}
+
+        {% for plant in plants limit: loop_limit %}
         <li class="{{ plant.main_zone.type }}">
             <a href="/veldverkenner/{{ plant.main_zone.slug }}/{{ plant.slug }}">
                 <article>
@@ -11,9 +18,10 @@
             </a>    
         </li>
         {% endfor %}
+
     {% else %}
-        <p>Je hebt nog niks gespaard
-            Start de <span> Veldverkenner </span> om meer te weten te komen over wat er groeit en je collectie aan te vullen
+        <p>Je hebt nog niks gespaard. 
+            Start de <span> Veldverkenner </span> om meer te weten te komen over wat er groeit en je collectie aan te vullen.
         </p>
     {% endif %}
 </ul>
