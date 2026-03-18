@@ -102,7 +102,10 @@
         {% when 'correct' %}
             <section class="correct">
                 <div class="result success">
-                    <h2>🎉 Helemaal goed!</h2>
+                    {% render 'partials/general-heading.liquid',
+                        heading_level: 2,
+                        content:"🎉 Helemaal goed!"
+                    %}
                     <p>Je hebt {{ quest.xp }} XP verdiend.</p>
                     <a href="/veldverkenner/{{ zone_slug }}" class="styled quest">Volgende opdracht</a>
                 </div>
@@ -111,7 +114,10 @@
         {% when 'incorrect' %}
             <section class="correct">
                 <div class="result error">
-                    <h2>Helaas, dat is niet juist.</h2>
+                    {% render 'partials/general-heading.liquid',
+                        heading_level: 2,
+                        content:"Helaas, dat is niet juist."
+                    %}
                     <p>Kijk nog eens goed naar de plant en probeer het opnieuw.</p>
                     <a href="?step=start" class="styled quest">Opnieuw proberen</a>
                 </div>
