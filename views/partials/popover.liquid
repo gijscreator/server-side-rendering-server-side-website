@@ -29,7 +29,7 @@
             </article>
             
             {% if zone.quest.type == 'button' %}
-                <img class="landscape" src="https://fdnd-agency.directus.app/assets/{{ zone.quest.plant.in_bloom }}" alt="">
+                <img class="landscape" src="https://fdnd-agency.directus.app/assets/{{ zone.quest.plant.in_bloom }}" alt="{{ zone.quest.plant.name }}">
             {% endif %}
 
             <article class="nextsteps">

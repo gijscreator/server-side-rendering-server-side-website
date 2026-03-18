@@ -342,7 +342,7 @@ app.get('/veldverkenner/:zone_slug/:item_slug', async (request, response, next) 
         }
         next()
     } catch (error) {
-        response.status(500).send('Server fout')
+        response.status(500).render('404.liquid')
     }
 })
 
